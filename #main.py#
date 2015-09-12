@@ -1,0 +1,29 @@
+#!/usr/bin/env python
+
+import tweepy, time, sys
+
+# codes found on corresponding twitter application page
+CONSUMER_KEY = 'a4wwuIYUCuBWCPYHSNuIClEax'
+CONSUMER_SECRET = 'gBuYEYkYfzziaFuNysDnxwgla06xiIia8vOJDulil8GybabBFa'
+ACCESS_KEY = '3623955735-y5iR6E4UzPlXXff2zxW2wjnOTyl3ilQWkeM05xz'
+ACCESS_SECRET = 'f3AzwWWIBL7QIOncI93Lo2LsyIxqSHUwnbVS9vpFvO5ty'
+
+# authentication process
+auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
+api = tweepy.API(auth)
+
+
+trends1 = api.trends_place(1) # trends1 is a list with only one element in it, which is a dict which we'll put in data.
+
+# grab the trends
+data = trends1[0]
+trends = data['trends']
+
+names = [trend['name'] for trend in trends] # grab the name from each trend
+trendsName = '\n'.join(names) # put all the names together with a ' ' separating them
+
+print trendsName
+
+
+def findAnagrams

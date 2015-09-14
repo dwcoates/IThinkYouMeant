@@ -9,6 +9,9 @@
 ##                                                                              ##
 ##################################################################################
 
+# There should be a anagrams database, and not just a dictionary. Will need to write a script
+# to WordNet database into anagrams list
+
 import tweepy, time, sys
 from pybloom import BloomFilter # still need to grab this dependency
 
@@ -39,7 +42,6 @@ while True:
     # ...tweepy magic for returning tweets ad nauseum goes here...
     anagrams = findAnagrams("", word)
 
-# logic for actually scramp
 
 def generateBloomFilter(file):
     "Generates the bloom filter for entries in file."

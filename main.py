@@ -9,8 +9,21 @@
 ##                                                                              ##
 ##################################################################################
 
-# There should be a anagrams database, and not just a dictionary. Will need to write a script
-# to WordNet database into anagrams list
+# Originally planned to use a bloomfilter to check for anagrams, however instead it
+# preprocesses WordNet dictionary into an anagram list file. Any two given words are
+# encoded identically iff they contain the same family of letters, i.e., one word is a
+# permutation of another. This is achieved by assigning each letter in the english language
+# with a unique prime, and relying on the theory of the unique prime factorization of any given
+# integer. Word sets never require decoding, as codes for anagram sets are hashed for reference,
+# so anagram set lookups are easy, thus factorizing large numbers is never a needed operation.
+# Encoding of anagrams is done once in the preprocessing
+
+# Unfortunately, this program will require likely some level of semantic parsing.
+# Choice is either to preserve semantic structure of tweet, or to take set of anagrams
+# corresponding to words and tweet, and constructing a new sentence, which would require
+# likely a set of semantic templates (a family of parts of speech). In either case, words
+# with multiple parts of speech will have to have their active part of speech determined from
+# context.
 
 import tweepy, time, sys
 from pybloom import BloomFilter # still need to grab this dependency
@@ -70,3 +83,6 @@ def findAnagrams(head, tail):
     for letter in tail:
         anagrams += findAnagram(head+letter, tail.replace(letter, ""))
     return anagrams;
+
+class AnagramDirectory:
+    def AnagramDirectory():

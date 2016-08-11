@@ -9,15 +9,14 @@ with open('LICENSE') as f:
     license = f.read()
 
 setup(
-    name='leven-squash',
+    name='IThinkYouMeant',
     version='0.0.1',
-    description='Method for very fast Levenstein distance approximation',
+    description='A twitter bot to help others express themselves',
     long_description=readme,
     author='Dodge W. Coates',
     author_email='dodge.w.coates@gmail.com',
-    package_data={'levenshtein.utils': ['log.json'],
-                  'demo.data': ['*.txt']},
+    # package_data={},
     url='NONE',
     license='LICENSE',
-    packages=find_packages(exclude=('docs'))
+    # packages=find_packages(exclude=('docs'))
 )
